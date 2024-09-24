@@ -2,20 +2,16 @@ const LoginFormulario = () => {
     return <>
         <h1>Login</h1> 
         <form>
-            <div>
-                <label htmlFor="txt_usuario">Usuario:</label>
+            <div class="mb-3">
+                <label htmlFor="txt_usuario" className="form-label">Usuario:</label>
+                <input id="txt_usuario" type="text" className="form-control"/>
+            </div>
+            <div class="mb-3">
+                <label htmlFor="txt_password" className="form-label">Password:</label>
+                <input id="txt_password" type="password" className="form-control" />
             </div>
             <div>
-                <input id="txt_usuario" type="text" />
-            </div>
-            <div>
-                <label htmlFor="txt_password">Password:</label>
-            </div>
-            <div>
-                <input id="txt_password" type="password" />
-            </div>
-            <div>
-                <button type="button">Login</button>
+                <button type="button" className="btn btn-success">Login</button>
             </div>
         </form>
     </>

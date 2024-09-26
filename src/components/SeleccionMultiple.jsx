@@ -12,7 +12,7 @@ const SeleccionMultiple = (props) => {
             onChange={ valueOnChange }>
             { 
                 props.data.map((elem) => {
-                    return <option value={ elem.id }>{ elem.nombre }</option>
+                    return <option key={ `pais_${elem.id}` } value={ elem.id }>{ elem.nombre }</option>
                 }) 
             }
         </select>

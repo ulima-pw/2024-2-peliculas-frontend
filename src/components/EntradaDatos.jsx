@@ -7,7 +7,7 @@ const EntradaDatos = (props) => {
         <label htmlFor="txt_value" className="form-label">
             { props.label }
         </label>
-        <input id="txt_value" 
+        <input
             type={ props.tipo === "entrada" ? "text" : "password" } 
             className="form-control"
             onChange={ valueOnChange }

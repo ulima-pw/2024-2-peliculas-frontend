@@ -2,7 +2,7 @@ import { useState } from "react"
 import EntradaDatos from "./EntradaDatos"
 import SeleccionMultiple from "./SeleccionMultiple"
 
-const LoginFormulario = () => {
+const LoginFormulario = (props) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [paisId, setPaisId] = useState(1)
@@ -18,11 +18,13 @@ const LoginFormulario = () => {
         <h1>Login</h1> 
         <form>
             <EntradaDatos 
+                key={ "input_username" }
                 label="Usuario:" 
                 tipo="entrada"
                 valor={ username }
                 setValor={ setUsername }/>
             <EntradaDatos 
+                key={ "input_password" }
                 label="Password:" 
                 tipo="password"
                 valor={ password }
@@ -35,12 +37,7 @@ const LoginFormulario = () => {
             <div>
                 <button type="button" className="btn btn-success"
                     onClick={ () => {
-                        if (username === "pw" && password === "2024") {
-                            console.log("LOGIN CORRECTO!")
-                            console.log("Pais:" + paisId )
-                        }else {
-                            console.log("ERROR LOGIN")
-                        }
+                        props.loginOnClick(username, password, paisId)
                     } }>
                     Login
                 </button>

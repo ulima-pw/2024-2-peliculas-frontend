@@ -3,7 +3,7 @@ const EntradaDatos = (props) => {
         props.setValor(evt.target.value)
     }
 
-    return <div class="mb-3">
+    return <div className="mb-3">
         <label htmlFor="txt_value" className="form-label">
             { props.label }
         </label>

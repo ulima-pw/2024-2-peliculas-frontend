@@ -10,7 +10,11 @@ const LoginPage = () => {
     const navigate = useNavigate()
 
     const loginHandler = (username, password, paisId) => {
-        if (username === "pw" && password === "2024") {
+
+        const usernameToLogin = localStorage.getItem("usuario")
+        const passwordToLogin = localStorage.getItem("password")
+
+        if (username === usernameToLogin && password === passwordToLogin) {
             console.log("Pais:" + paisId )
             navigate("/main")
         }else {

@@ -11,10 +11,9 @@ const LoginPage = () => {
 
     const loginHandler = (username, password, paisId) => {
 
-        const usernameToLogin = localStorage.getItem("usuario")
-        const passwordToLogin = localStorage.getItem("password")
+        const usuarioToLogin = JSON.parse(sessionStorage.getItem("USUARIO"))
 
-        if (username === usernameToLogin && password === passwordToLogin) {
+        if (username === usuarioToLogin.usuario && password === usuarioToLogin.password) {
             console.log("Pais:" + paisId )
             navigate("/main")
         }else {
@@ -33,7 +32,8 @@ const LoginPage = () => {
         <div className="col-md-4"></div>
         <div className="col-md-4">
             <LoginFormulario 
-                loginOnClick={ loginHandler }/>
+                loginOnClick={ loginHandler }
+                modo={"login"}/>
             {
                 (() => {
                     if (error !== "") {

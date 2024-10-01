@@ -5,13 +5,20 @@ const RegistroPage = () => {
     const [error, setError] = useState("")
 
     const registrarUsuarioHandler = (username, password, paisId) => {
-        console.log("Se deberia registrar un usuario")
+        const usuario = {
+            usuario : username,
+            password : password,
+            paisId : paisId
+        }
+        sessionStorage.setItem("USUARIO", JSON.stringify(usuario))
     }
+
     return <div className="row">
         <div className="col-md-4"></div>
         <div className="col-md-4">
             <LoginFormulario 
-                loginOnClick={ registrarUsuarioHandler }/>
+                loginOnClick={ registrarUsuarioHandler }
+                modo={"registro"}/>
             {
                 (() => {
                     if (error !== "") {

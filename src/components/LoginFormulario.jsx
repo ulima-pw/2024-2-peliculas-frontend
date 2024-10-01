@@ -15,7 +15,11 @@ const LoginFormulario = (props) => {
     ]
 
     return <>
-        <h1>Login</h1> 
+        <h1>
+            {
+                props.modo === "login"? "Login" : "Registro Usuario"
+            }
+        </h1> 
         <form>
             <EntradaDatos 
                 key={ "input_username" }
@@ -39,7 +43,9 @@ const LoginFormulario = (props) => {
                     onClick={ () => {
                         props.loginOnClick(username, password, paisId)
                     } }>
-                    Login
+                    {
+                        props.modo === "login"? "Login" : "Guardar"
+                    }
                 </button>
             </div>
         </form>

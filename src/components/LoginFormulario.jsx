@@ -19,7 +19,7 @@ const LoginFormulario = (props) => {
         <form>
             <EntradaDatos 
                 key={ "input_username" }
-                label="Usuario:" 
+                label="Usuario: " 
                 tipo="entrada"
                 valor={ username }
                 setValor={ setUsername }/>

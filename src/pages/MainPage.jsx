@@ -12,7 +12,7 @@ const MainPage = () => {
         {
             id : 2,
             nombre: "Robot Salvaje",
-            url : "https://hips.hearstapps.com/hmg-prod/images/poster-joker-2-folie-a-deux-joaquin-phoenix-lady-gaga-66d8805e725c1.jpg?resize=980:*"
+            url : "https://cdn.apis.cineplanet.com.pe/CDN/media/entity/get/FilmPosterGraphic/HO00002008"
         },
         {
             id : 3,

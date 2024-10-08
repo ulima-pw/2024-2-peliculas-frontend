@@ -1,11 +1,12 @@
 import PeliculaCard from "./PeliculaCard"
 
-const ListaPeliculas = () => {
+const ListaPeliculas = (props) => {
     return <div className="row">
-        <PeliculaCard />
-        <PeliculaCard />
-        <PeliculaCard />
-        <PeliculaCard />
+        {
+            props.peliculas.map( (pelicula) => {
+                return <PeliculaCard pelicula={ pelicula }/>
+            })
+        }
     </div>
 }
 

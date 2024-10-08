@@ -1,35 +1,22 @@
+import { useState } from "react"
 import Footer from "../components/Footer"
 import ListaCategorias from "../components/ListaCategorias"
 import ListaPeliculas from "../components/ListaPeliculas"
+import { useEffect } from "react"
 
 const MainPage = () => {
-    const listaPeliculas = [
-        {
-            id : 1,
-            nombre: "Joker 2",
-            url : "https://hips.hearstapps.com/hmg-prod/images/poster-joker-2-folie-a-deux-joaquin-phoenix-lady-gaga-66d8805e725c1.jpg?resize=980:*"
-        },
-        {
-            id : 2,
-            nombre: "Robot Salvaje",
-            url : "https://cdn.apis.cineplanet.com.pe/CDN/media/entity/get/FilmPosterGraphic/HO00002008"
-        },
-        {
-            id : 3,
-            nombre: "Alien Romulus",
-            url : "https://hips.hearstapps.com/hmg-prod/images/poster-joker-2-folie-a-deux-joaquin-phoenix-lady-gaga-66d8805e725c1.jpg?resize=980:*"
-        },
-        {
-            id : 4,
-            nombre: "Beetlejuice 2",
-            url : "https://hips.hearstapps.com/hmg-prod/images/poster-joker-2-folie-a-deux-joaquin-phoenix-lady-gaga-66d8805e725c1.jpg?resize=980:*"
-        },
-        {
-            id : 5,
-            nombre: "El guardian de la magia",
-            url : "https://hips.hearstapps.com/hmg-prod/images/poster-joker-2-folie-a-deux-joaquin-phoenix-lady-gaga-66d8805e725c1.jpg?resize=980:*"
-        }
-    ]
+    const [listaPeliculas, setListaPeliculas] = useState([])
+
+    const httpGetPeliculas = async () => {
+        const resp = await fetch("http://localhost:3000/data/peliculas.json")
+        const peliculas = await resp.json()
+        setListaPeliculas(peliculas)
+    }
+
+    useEffect(() => {
+        httpGetPeliculas()
+    }, [])
+    
 
     return <div className="container">
         <div className="row mb-4">

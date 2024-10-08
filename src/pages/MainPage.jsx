@@ -6,6 +6,7 @@ import { useEffect } from "react"
 
 const MainPage = () => {
     const [listaPeliculas, setListaPeliculas] = useState([])
+    const [categoriaIdSeleccionada, setCategoriaIdSeleccionada] = useState(0)
 
     const httpGetPeliculas = async () => {
         const resp = await fetch("http://localhost:3000/data/peliculas.json")
@@ -17,16 +18,23 @@ const MainPage = () => {
         httpGetPeliculas()
     }, [])
     
+    const seleccionarCategoriaHandler = (id) => {
+        setCategoriaIdSeleccionada(id)
+    }
 
     return <div className="container">
         <div className="row mb-4">
             <div className="col-md-4">
                 <h1>PW Cinema</h1>
                 { /* Lista de Categorias */ }
-                <ListaCategorias />
+                <ListaCategorias 
+                    categoriaIdSeleccionada={ categoriaIdSeleccionada }
+                    onSeleccionarCategoria={ seleccionarCategoriaHandler }/>
             </div>
             <div className="col-md-8 pt-4">
-                <ListaPeliculas peliculas={ listaPeliculas }/>
+                <ListaPeliculas
+                    categoriaIdSeleccionada={ categoriaIdSeleccionada } 
+                    peliculas={ listaPeliculas }/>
             </div>
         </div>
         <Footer />

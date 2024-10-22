@@ -9,7 +9,7 @@ const MainPage = () => {
     const [categoriaIdSeleccionada, setCategoriaIdSeleccionada] = useState(0)
 
     const httpGetPeliculas = async () => {
-        const resp = await fetch("http://localhost:3000/data/peliculas.json")
+        const resp = await fetch("http://localhost:3000/peliculas")
         const peliculas = await resp.json()
         setListaPeliculas(peliculas)
     }

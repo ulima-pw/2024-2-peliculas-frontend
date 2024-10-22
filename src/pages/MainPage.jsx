@@ -8,18 +8,22 @@ const MainPage = () => {
     const [listaPeliculas, setListaPeliculas] = useState([])
     const [categoriaIdSeleccionada, setCategoriaIdSeleccionada] = useState(0)
 
-    const httpGetPeliculas = async () => {
-        const resp = await fetch("http://localhost:3000/peliculas")
+    const httpGetPeliculas = async (categoriaId) => {
+        const url = categoriaId === 0 
+            ? "http://localhost:3000/peliculas" 
+            : `http://localhost:3000/peliculas?categoria=${categoriaId}`
+        const resp = await fetch(url)
         const peliculas = await resp.json()
         setListaPeliculas(peliculas)
     }
 
     useEffect(() => {
-        httpGetPeliculas()
+        httpGetPeliculas(0)
     }, [])
     
     const seleccionarCategoriaHandler = (id) => {
         setCategoriaIdSeleccionada(id)
+        httpGetPeliculas(id)
     }
 
     return <div className="container">

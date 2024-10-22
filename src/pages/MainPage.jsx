@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import ListaCategorias from "../components/ListaCategorias"
 import ListaPeliculas from "../components/ListaPeliculas"
 import { useEffect } from "react"
+import RegistroPeliculaModal from "../components/RegistroPeliculaModal"
 
 const MainPage = () => {
     const [listaPeliculas, setListaPeliculas] = useState([])
@@ -41,6 +42,7 @@ const MainPage = () => {
                     peliculas={ listaPeliculas }/>
             </div>
         </div>
+        <RegistroPeliculaModal show={false}/>
         <Footer />
     </div>
 }

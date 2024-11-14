@@ -1,21 +1,28 @@
 const ListaCategorias = (props) => {
     return <ul className="list-group">
         <li className={ "list-group-item " + ( props.categoriaIdSeleccionada == 0 ? "active" : "" ) }
-            onClick={ () => {
-                props.onSeleccionarCategoria(0)
-            } }>Todas</li>
-        <li className={ "list-group-item " + ( props.categoriaIdSeleccionada == 1 ? "active" : "" ) }
-             onClick={ () => {
-                props.onSeleccionarCategoria(1)
-            } }>Acción</li>
-        <li className={ "list-group-item " + ( props.categoriaIdSeleccionada == 2 ? "active" : "" ) }
-             onClick={ () => {
-                props.onSeleccionarCategoria(2)
-            } }>Comedia</li>
-        <li className={ "list-group-item " + ( props.categoriaIdSeleccionada == 3 ? "active" : "" ) }
-             onClick={ () => {
-                props.onSeleccionarCategoria(3)
-            } }>Infantil</li>
+            onClick={ 
+                () => {
+                    props.onSeleccionarCategoria(0)
+                } 
+            }>
+            Todas
+        </li>
+        {
+            props.categorias.map((categoria) => {
+                return <li className={ 
+                                "list-group-item " + 
+                                ( props.categoriaIdSeleccionada == categoria.id ? "active" : "" ) 
+                            }
+                            onClick={ 
+                                () => {
+                                    props.onSeleccionarCategoria(categoria.id)
+                                }
+                            }>
+                    { categoria.nombre }
+                </li>
+            })
+        }
     </ul>
 }
 

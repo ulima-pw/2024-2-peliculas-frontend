@@ -1,6 +1,13 @@
+import { useState } from "react"
 import SeleccionVariasOpciones from "./SeleccionVariasOpciones"
+import EntradaDatos from "./EntradaDatos"
+import SeleccionMultiple from "./SeleccionMultiple"
 
 const RegistroPeliculaModal = (props) => {
+    const [peliculaNombre , setPeliculaNombre] = useState("")
+    const [peliculaURL, setPeliculaURL] = useState("")
+    const [peliculaCategoriaId, setPeliculaCategoriaId] = useState(0)
+
     if (props.show){
         return <div className="modal fade show d-block" tabindex="-1">
             <div className="modal-dialog">
@@ -18,22 +25,21 @@ const RegistroPeliculaModal = (props) => {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <div>
-                            <label className="form-label">Nombre: </label>
-                            <input type="text" className="form-control"/>
-                        </div>
-                        <div>
-                            <label className="form-label">URL: </label>
-                            <input type="text" className="form-control"/>
-                        </div>
-                        <div>
-                            <label className="form-label">Categoría: </label>
-                            <select className="form-select">
-                                <option>Acción</option>
-                                <option>Comedia</option>
-                                <option>Infantil</option>
-                            </select>
-                        </div>
+                        <EntradaDatos
+                            label={ "Nombre:" }
+                            tipo={ "entrada" }
+                            valor={ peliculaNombre }
+                            setValor={ setPeliculaNombre }/>
+                        <EntradaDatos
+                            label={ "URL:" }
+                            tipo={ "entrada" }
+                            valor={ peliculaURL }
+                            setValor={ setPeliculaURL }/>
+                        <SeleccionMultiple 
+                            label={ "Categoria:" }
+                            data={ props.categorias }
+                            valor={ peliculaCategoriaId }
+                            setValor={ setPeliculaCategoriaId }/>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary"

@@ -7,6 +7,7 @@ import RegistroPeliculaModal from "../components/RegistroPeliculaModal"
 
 const MainPage = () => {
     const [listaPeliculas, setListaPeliculas] = useState([])
+    const [listaCategorias, setListaCategorias] = useState([])
     const [categoriaIdSeleccionada, setCategoriaIdSeleccionada] = useState(0)
     const [modalShown, setModalShown] = useState(false)
 
@@ -19,7 +20,15 @@ const MainPage = () => {
         setListaPeliculas(peliculas)
     }
 
+    const httpGetCategorias = async () => {
+        const url = "http://localhost:3000/categorias"
+        const resp = await fetch(url)
+        const categorias = await resp.json()
+        setListaCategorias(categorias)
+    }
+
     useEffect(() => {
+        httpGetCategorias()
         httpGetPeliculas(0)
     }, [])
     
@@ -35,7 +44,8 @@ const MainPage = () => {
                 { /* Lista de Categorias */ }
                 <ListaCategorias 
                     categoriaIdSeleccionada={ categoriaIdSeleccionada }
-                    onSeleccionarCategoria={ seleccionarCategoriaHandler }/>
+                    onSeleccionarCategoria={ seleccionarCategoriaHandler }
+                    categorias={ listaCategorias }/>
                 <button type="button"
                     className="btn btn-primary mt-4"
                     onClick={ () => {
@@ -51,7 +61,8 @@ const MainPage = () => {
             </div>
         </div>
         <RegistroPeliculaModal 
-            show={modalShown}
+            show={ modalShown }
+            categorias={ listaCategorias }
             onClose={ () => {
                 setModalShown(false)
             } }/>

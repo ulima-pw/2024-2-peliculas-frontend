@@ -1,16 +1,9 @@
 import PeliculaCard from "./PeliculaCard"
 
-const ListaPeliculas = (props) => {
-    let peliculasFiltradas = props.peliculas
-    if (props.categoriaIdSeleccionada !== 0) {
-        peliculasFiltradas = props.peliculas.filter((pelicula) => {
-            return pelicula.categoria === props.categoriaIdSeleccionada
-        })
-    }
-    
+const ListaPeliculas = (props) => {    
     return <div className="row">
         {
-            peliculasFiltradas.map( (pelicula) => {
+            props.peliculas.map( (pelicula) => {
                 return <PeliculaCard pelicula={ pelicula }/>
             })
         }

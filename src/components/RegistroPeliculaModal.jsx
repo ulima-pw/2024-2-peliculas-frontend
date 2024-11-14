@@ -1,3 +1,5 @@
+import SeleccionVariasOpciones from "./SeleccionVariasOpciones"
+
 const RegistroPeliculaModal = (props) => {
     if (props.show){
         return <div className="modal fade show d-block" tabindex="-1">

@@ -40,6 +40,11 @@ const RegistroPeliculaModal = (props) => {
                             data={ props.categorias }
                             valor={ peliculaCategoriaId }
                             setValor={ setPeliculaCategoriaId }/>
+                        <SeleccionVariasOpciones 
+                            labelSeleccionado={ "Cines seleccionados:" }
+                            labelDisponible={ "Cines disponibles:" }
+                            dataSeleccionada={ [] }
+                            dataDisponible={ props.cinesDisponibles }/>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary"

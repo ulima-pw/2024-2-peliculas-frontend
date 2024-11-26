@@ -5,6 +5,8 @@ import ListaPeliculas from "../components/ListaPeliculas"
 import { useEffect } from "react"
 import RegistroPeliculaModal from "../components/RegistroPeliculaModal"
 
+import { BACKEND_URL } from "../parametros"
+
 const MainPage = () => {
     const [listaPeliculas, setListaPeliculas] = useState([])
     const [listaCategorias, setListaCategorias] = useState([])
@@ -14,22 +16,22 @@ const MainPage = () => {
 
     const httpGetPeliculas = async (categoriaId) => {
         const url = categoriaId === 0 
-            ? "http://localhost:3000/peliculas" 
-            : `http://localhost:3000/peliculas?categoria=${categoriaId}`
+            ? `${BACKEND_URL}/peliculas` 
+            : `${BACKEND_URL}/peliculas?categoria=${categoriaId}`
         const resp = await fetch(url)
         const peliculas = await resp.json()
         setListaPeliculas(peliculas)
     }
 
     const httpGetCategorias = async () => {
-        const url = "http://localhost:3000/categorias"
+        const url = `${BACKEND_URL}/categorias`
         const resp = await fetch(url)
         const categorias = await resp.json()
         setListaCategorias(categorias)
     }
 
     const httpGetCines = async () => {
-        const url = "http://localhost:3000/cines"
+        const url = `${BACKEND_URL}/cines`
         const resp = await fetch(url)
         const cines = await resp.json()
         setListaCines(cines)

@@ -3,7 +3,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
 import LoginFormulario from "../components/LoginFormulario"
 import { useState } from "react"
-
+import { BACKEND_URL } from "../parametros"
 
 const LoginPage = () => {
     const [error, setError] = useState("")
@@ -15,7 +15,7 @@ const LoginPage = () => {
             usuario : username,
             password : password
         }
-        const resp = await fetch("http://localhost:3000/login", {
+        const resp = await fetch(`${BACKEND_URL}/login`, {
             method : "POST",
             body : JSON.stringify(data),
             headers : {
@@ -28,7 +28,7 @@ const LoginPage = () => {
         {
             // Login correcto
             setError("")
-            navigate("/main")
+            navigate("/2024-2-peliculas-frontend/main")
         }else
         {
             // Login incorrecto
